@@ -1,0 +1,4 @@
+   This is the contents of a text file for testing.
+This file must be processed by the program line by line
+      and then send to the standard output the same contents
+with no extra white spaces and the beginning and the end of each line.
