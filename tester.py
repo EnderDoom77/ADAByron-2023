@@ -29,7 +29,7 @@ def check_equal(path_expected: str, path_result: str, problem:int, sample:int):
         
         if l1 != l2:
             print(f"DIFF LINE: P{problem}.{sample} -> Line {i + 1}")
-            print(f"EXPECTED: \'{l1[:-1]}\'\nRESULT:   \'{l2[:-1]}\'")
+            print(f"\tEXPECTED: \'{l1[:-1]}\'\n\tRESULT:   \'{l2[:-1]}\'")
             return
     print(f"SUCCESS: P{problem}.{sample}")
 
@@ -48,7 +48,6 @@ for path in os.listdir(data_root):
             sys.stdout = open(f"{outpath}.test", "w", encoding="utf-8")
             try:
                 run_program(int(problem))
-                time.sleep(0.5)  
             except:
                 sys.stdout = original_out
                 print(f"Unable to find module \'problem{problem}.py\'")
@@ -56,7 +55,7 @@ for path in os.listdir(data_root):
 
             to_check.append((outpath, f"{outpath}.test", problem, sample))
 
-time.sleep(1)
+time.sleep(0.1)
 sys.stdout = original_out
 for (refpath, testpath, problem, sample) in to_check:
     check_equal(refpath, testpath, problem, sample)
