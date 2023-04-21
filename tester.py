@@ -17,17 +17,13 @@ def run_program(n: int):
 def check_equal(path_expected: str, path_result: str, pid: str):
     lines1 = open(path_expected, "r").readlines()
     lines2 = open(path_result, "r").readlines()
-    for i in range(max(len(lines1), len(lines2))):
-        try:
-            l1 = lines1[i]; l2 = lines2[i]
-        except IndexError:
-            print(f"DIFF LNCOUNT: {pid} -> Line {i + 1}")
-            return
-
+    for i,(l1,l2) in enumerate(zip(lines1, lines2)):
         if l1 != l2:
             print(f"DIFF LINE: {pid} -> Line {i + 1}")
             print(f"\tEXPECTED: \'{l1[:-1]}\'\n\tRESULT:   \'{l2[:-1]}\'")
             return
+    if (cnt1 := len(lines1)) != (cnt2 := len(lines2)):
+        print(f"DIFF LNCOUNT: {pid} -> {cnt1} != {cnt2}")
     print(f"SUCCESS: {pid}")
 
 to_check = []
