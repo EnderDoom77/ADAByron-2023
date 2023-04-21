@@ -24,7 +24,8 @@ def check_equal(path_expected: str, path_result: str, pid: str):
             return
     if (cnt1 := len(lines1)) != (cnt2 := len(lines2)):
         print(f"DIFF LNCOUNT: {pid} -> {cnt1} != {cnt2}")
-    print(f"SUCCESS: {pid}")
+    else:
+        print(f"SUCCESS: {pid}")
 
 to_check = []
 data_root = "data/"
