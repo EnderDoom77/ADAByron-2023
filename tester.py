@@ -3,7 +3,7 @@ import sys
 import os
 import re
 
-sample_re = re.compile(r"sample.*([0-9]+).*\.([0-9]+)\.in")
+sample_re = re.compile(r"sample.*([0-9]+)\.([0-9]+)\.in")
 modules = {}
 console_out = sys.stdout
 
